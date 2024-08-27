@@ -1,3 +1,4 @@
 openai==1.35.13
 pysbd==0.3.4
 spacy==3.7.5
+PyPDF2==3.0.1
