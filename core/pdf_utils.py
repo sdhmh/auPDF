@@ -1,18 +1,12 @@
-import re
 from pathlib import Path
 
 from PyPDF2 import PdfReader
 
 
-def get_pdf_text(pdf_path: Path) -> str:
+def get_pages_with_text(pdf_path: Path) -> list[str]:
     with open(pdf_path, "rb") as f:
         pdf = PdfReader(f)
-        text = ""
+        pages = []
         for page in pdf.pages:
-            text += page.extract_text()
-        return text
-
-
-def get_pdf_text_chunks(pdf_path: Path) -> list[str]:
-    text = get_pdf_text(pdf_path)
-    return re.split(r"(?<=[.!?])\s+", text)
+            pages.append(page.extract_text())
+        return pages
