@@ -30,12 +30,12 @@ pip install -r requirements.txt
 
 For now, auPDF doesn't have an API or UI to interact with as it is barebones.
 
-To test it, add an input file which already contian text. Reference it in the page_utils.py file.
+To test it, add an input file which already contian text. Reference it in the `core/page_utils.py` file.
 
 You can use it by running the following command:
 
 ```bash
-python page_utils.py
+python core/page_utils.py
 ```
 
 > This guide will soon be updated with a proper API and UI.
