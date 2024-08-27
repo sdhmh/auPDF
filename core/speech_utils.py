@@ -3,7 +3,7 @@ from pathlib import Path
 
 import openai
 
-from text_utils import Line
+from .text_utils import Line
 
 OPENAI_CLIENT = os.getenv("OPENAI_CLIENT", "http://127.0.0.1:8000/v1") # configured by default to use local openedai-speech
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "sk-222222222") # temp key for local models
