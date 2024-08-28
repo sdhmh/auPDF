@@ -1,4 +1,6 @@
-openai==1.35.13
-pysbd==0.3.4
-spacy==3.7.5
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz#sha256=1075c2aa2bc2fee105ab6e90a01a5d1a428c9f5b20a1fa003dc2cb6a438d295e
+openai==1.42.0
 PyPDF2==3.0.1
+spacy==3.7.6
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5
