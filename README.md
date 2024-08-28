@@ -14,7 +14,7 @@ AuPDF is a simple PDF server built using Python and FastAPI which provides an AP
 
 - FastAPI
 - PyPDF2 (to extract text from PDFs)
-- spacy & pysbd (to convert large chunk of text to smaller and human-readable chunks)
+- spacy (to convert large chunk of text to smaller chunks)
 
 More technologies will be added as the project progresses.
 
@@ -22,6 +22,25 @@ More technologies will be added as the project progresses.
 
 ### Installation
 
+The base version of python used in this project is `3.12`.
+
+Installing dependencies in a virtual environment is recommended.
+
+On Unix-based systems, you can create a virtual environment using the following commands:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+On Windows, you can create a virtual environment (Command Prompt) using the following commands:
+
+```cmd
+python -m venv .venv
+.\.venv\Scripts\activate
+```
+
+Install the dependencies in the virtual environment:
 ```bash
 pip install -r requirements.txt
 ```
@@ -30,13 +49,17 @@ pip install -r requirements.txt
 
 For now, auPDF doesn't have an API or UI to interact with as it is barebones.
 
-To test it, add an input file which already contian text. Reference it in the `core/page_utils.py` file.
+To test it, the convert_pdf.py file contains a the necessary code to convert a PDF to audio.
 
 You can use it by running the following command:
 
 ```bash
-python core/page_utils.py
+python convert_pdf.py -i <input_file> -o <output_folder_name>
 ```
+
+A new folder with the name "processed" will be created inside which the output folder will reside.
+
+It will have the necessary json containing the text of the page and the audio files in their respective folders.
 
 > This guide will soon be updated with a proper API and UI.
 > For now, you can use it as a standalone tool.
