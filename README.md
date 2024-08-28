@@ -37,7 +37,7 @@ On Windows, you can create a virtual environment (Command Prompt) using the foll
 
 ```cmd
 python -m venv .venv
-.\.venv\Scripts\activate
+call .\.venv\Scripts\activate
 ```
 
 Install the dependencies in the virtual environment:
