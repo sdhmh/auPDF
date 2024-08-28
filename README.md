@@ -49,15 +49,15 @@ pip install -r requirements.txt
 
 For now, auPDF doesn't have an API or UI to interact with as it is barebones.
 
-To test it, the convert_pdf.py file contains a the necessary code to convert a PDF to audio.
+To test it, the `convert_pdf.py` file contains the necessary code to convert a PDF to audio.
 
 You can use it by running the following command:
 
 ```bash
-python convert_pdf.py -i <input_file> -o <output_folder_name>
+python `convert_pdf.py` -i <input_file> -o <output_folder_name>
 ```
 
-A new folder with the name "processed" will be created inside which the output folder will reside.
+A new folder with the name `processed` will be created inside which the output folder will reside.
 
 It will have the necessary json containing the text of the page and the audio files in their respective folders.
 
