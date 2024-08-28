@@ -1,24 +1,42 @@
-import json
-from pathlib import Path
+from .text_utils import (
+    FullPageText,
+    Line,
+    LineChunk,
+    clean_text,
+    pad_int,
+    split_line,
+)
 
-from .speech_utils import convert_to_audio
-from .text_utils import clean_text
 
+def parse_page(page_text: str, id: str) -> FullPageText:
+    """
+    Parses a page of text into a FullPageText object.
 
-def parse_page(
-    input_file: Path, output_file: Path, output_dir: Path | None = None
-) -> None:
-    identifier = input_file.stem
+    If the page is empty, returns FullPageText(id=id, lines=[])
 
-    if not output_dir:
-        output_dir = "processed" / Path(identifier)
+    Params:
+    -------
 
-    with open(input_file, "r", encoding="utf-8") as testfile:
-        texts = clean_text((test for test in testfile), identifier=identifier)
-        texts.lines = [
-            convert_to_audio(line, output_directory=output_dir / "audio")
-            for line in texts.lines
-        ]
+    :param page_text: The text of the page to be parsed.
+    :param id: The id of the page
 
-    with open(output_dir / output_file, "w", encoding="utf-8") as jf:
-        json.dump(texts.todict(), jf)
+    Returns:
+    -------
+    FullPageText: the parsed page
+
+    """
+    processed_text = FullPageText(id=id)
+
+    clean_page_text = clean_text(page_text)
+    if not clean_page_text:
+        return processed_text
+    for line_no, line in enumerate(clean_page_text.splitlines(), 1):
+        line_id = f"{id}/{pad_int(line_no, 4)}"
+        processed_line = Line(id=line_id, text_chunks=[])
+        line_chunks = split_line(line)
+        for chunk_id, chunk in enumerate(line_chunks, 1):
+            chunk_id = f"{line_id}/{pad_int(chunk_id,3)}"
+            line_data = LineChunk(id=chunk_id, chunk=chunk)
+            processed_line.text_chunks.append(line_data)
+        processed_text.lines.append(processed_line)
+    return processed_text
